@@ -46,7 +46,7 @@ export const DevRouteSwitcher: React.FC = () => {
           isV3 ? 'bg-[#10ACFC] text-[#041A3B] font-bold shadow-sm' : 'text-white/75 hover:text-white'
         }`}
       >
-        Corporate hero (/v3)
+        Corporate (/v3)
       </Link>
     </div>
   );
