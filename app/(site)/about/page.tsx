@@ -1,16 +1,19 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import Image from 'next/image';
 import { content } from '@/lib/content-v2';
 import { SITE } from '@/lib/site';
 import { PageHero } from '@/components/site/PageHero';
 import { CtaBand } from '@/components/site/CtaBand';
 import { Dash, Section, SectionHeading } from '@/components/site/ui';
+import { JsonLd, founderSchema } from '@/components/site/JsonLd';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'About Iftikhar Ahmed',
   description:
     'Iftikhar Ahmed is a certified corporate trainer, sales and marketing specialist, business consultant and keynote speaker, and the founder of Eager Group.',
-};
+  path: '/about',
+});
 
 const PRINCIPLES = [
   { title: 'Practical first', text: 'Every framework is built to be used at work the next morning, not studied in theory.' },
@@ -21,6 +24,7 @@ const PRINCIPLES = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={{ '@context': 'https://schema.org', ...founderSchema }} />
       <PageHero
         eyebrow="About"
         title="A trainer and consultant who runs his own businesses"

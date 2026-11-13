@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16228a"/>
+      <stop offset="0.55" stop-color="#0a1260"/>
+      <stop offset="1" stop-color="#050a36"/>
+    </linearGradient>
+    <linearGradient id="swoosh" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#c9a24b"/>
+      <stop offset="1" stop-color="#f3e2bd"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <!-- The "A" from the EAGER wordmark: two legs, flat top, no crossbar -->
+  <path d="M11.5 52 L25.5 12 H38.5 L52.5 52 H42.5 L32 21 L21.5 52 Z" fill="#ffffff"/>
+  <!-- The swoosh that replaces the crossbar -->
+  <path d="M7 53.5 C 19 42.5, 35 35.5, 57.5 30.5 C 41 37.5, 27 45.5, 15 55.5 Z"
+        fill="url(#swoosh)" stroke="#0a1260" stroke-width="2.2" paint-order="stroke" stroke-linejoin="round"/>
+</svg>

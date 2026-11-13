@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import { Suspense } from 'react';
 import { ExternalLink, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
 import { PROGRAMMES, SERVICES, SITE } from '@/lib/site';
@@ -7,10 +8,12 @@ import { EnquiryForm } from '@/components/site/EnquiryForm';
 import { FaqList } from '@/components/site/blocks';
 import { Section, SectionHeading } from '@/components/site/ui';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Contact',
-  description: 'Contact Eager Consulting & Training in Karachi about training, consultancy, programmes or coaching.',
-};
+  description:
+    'Contact Eager Consulting & Training in Karachi about training, consultancy, programmes or coaching.',
+  path: '/contact',
+});
 
 const TOPICS = ['General enquiry', ...PROGRAMMES.map((p) => p.title), ...SERVICES.map((s) => s.title)];
 

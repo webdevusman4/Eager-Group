@@ -28,24 +28,21 @@ export const metadata: Metadata = {
     template: '%s | Eager Consulting & Training',
   },
   description,
+  applicationName: 'Eager Consulting & Training',
+  appleWebApp: { title: 'Eager', statusBarStyle: 'default' },
+  formatDetection: { telephone: true },
   openGraph: {
     siteName: 'Eager Consulting & Training',
     title: 'Eager Consulting & Training | Iftikhar Ahmed',
     description,
-    images: [{ url: '/images/og-image.webp', width: 1200, height: 630, alt: 'Eager Consulting & Training' }],
     type: 'website',
     locale: 'en_PK',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Eager Consulting & Training | Iftikhar Ahmed',
-    description,
-    images: ['/images/og-image.webp'],
-  },
+  twitter: { card: 'summary_large_image' },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#0B1F3F',
+  themeColor: '#0A1260',
   width: 'device-width',
   initialScale: 1,
 };

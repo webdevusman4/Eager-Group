@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import { notFound } from 'next/navigation';
 import { Mail, Phone } from 'lucide-react';
 import { SERVICES, SITE, getService } from '@/lib/site';
@@ -16,7 +17,7 @@ export function generateStaticParams(): Params[] {
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const service = getService((await params).slug);
-  return service ? { title: service.title, description: service.summary } : {};
+  return service ? pageMetadata({ title: service.title, description: service.summary, path: `/services/${service.slug}`, ownImage: true }) : {};
 }
 
 export default async function ServicePage({ params }: { params: Promise<Params> }) {

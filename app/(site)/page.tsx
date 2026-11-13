@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight, CalendarDays } from 'lucide-react';
@@ -22,6 +24,12 @@ const FOUNDER_POINTS = [
     text: 'Success means more revenue, protected margins, stronger teams and clearer careers.',
   },
 ];
+
+export const metadata: Metadata = pageMetadata({
+  description:
+    'Corporate sales training, business consultancy and executive programmes led by Iftikhar Ahmed, founder of Eager Group, Karachi.',
+  path: '/',
+});
 
 export default function HomePage() {
   const seatsLeft = getSeatsLeft();

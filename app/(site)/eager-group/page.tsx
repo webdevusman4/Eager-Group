@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import { Building2, GraduationCap, Package } from 'lucide-react';
 import { content } from '@/lib/content-v2';
 import { COMPANY_SUMMARIES } from '@/lib/site';
@@ -6,11 +7,12 @@ import { PageHero } from '@/components/site/PageHero';
 import { CtaBand } from '@/components/site/CtaBand';
 import { Dash, Section, SectionHeading } from '@/components/site/ui';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Eager Group',
   description:
     'Eager Group is three operating companies founded by Iftikhar Ahmed: Eager Packaging, Eager Properties and Eager Teaching & Trainings.',
-};
+  path: '/eager-group',
+});
 
 const ICONS = { packaging: Package, properties: Building2, trainings: GraduationCap } as const;
 

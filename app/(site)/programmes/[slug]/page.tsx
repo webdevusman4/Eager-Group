@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Clock, MapPin, Users, Wallet } from 'lucide-react';
@@ -9,6 +10,7 @@ import { CtaBand } from '@/components/site/CtaBand';
 import { ModuleExplorer } from '@/components/site/ModuleExplorer';
 import { EnrolmentPanel, FaqList, RelatedList } from '@/components/site/blocks';
 import { Button, Dash, Section, SectionHeading } from '@/components/site/ui';
+import { JsonLd, masterclassSchema } from '@/components/site/JsonLd';
 
 type Params = { slug: string };
 
@@ -20,7 +22,7 @@ export function generateStaticParams(): Params[] {
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const p = getProgramme((await params).slug);
-  return p ? { title: p.title, description: p.summary } : {};
+  return p ? pageMetadata({ title: p.title, description: p.summary, path: `/programmes/${p.slug}`, ownImage: true }) : {};
 }
 
 export default async function ProgrammePage({ params }: { params: Promise<Params> }) {
@@ -67,6 +69,7 @@ export default async function ProgrammePage({ params }: { params: Promise<Params
 
       {isFlagship ? (
         <>
+          <JsonLd data={masterclassSchema} />
           <Section tone="paper" labelledBy="masterclass-modules">
             <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
               <div className="lg:col-span-8">

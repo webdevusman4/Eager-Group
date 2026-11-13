@@ -1,14 +1,17 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import { SERVICES } from '@/lib/site';
 import { PageHero } from '@/components/site/PageHero';
 import { CtaBand } from '@/components/site/CtaBand';
 import { ServiceCard } from '@/components/site/blocks';
 import { Section, SectionHeading } from '@/components/site/ui';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Services',
-  description: 'Corporate and sales training, business consultancy, stock market strategy, keynotes and one-to-one coaching.',
-};
+  description:
+    'Corporate and sales training, business consultancy, stock market strategy, keynotes and one-to-one coaching.',
+  path: '/services',
+});
 
 const STEPS = [
   { title: 'A first conversation', text: 'We talk through your goals, your team and what is getting in the way.' },

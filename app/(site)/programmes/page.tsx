@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/metadata';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
@@ -9,11 +10,12 @@ import { CtaBand } from '@/components/site/CtaBand';
 import { FaqList, ProgrammeCard } from '@/components/site/blocks';
 import { Section, SectionHeading } from '@/components/site/ui';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Programmes',
   description:
     'The 8-Hour Executive Sales Masterclass, plus programmes in stock market investing, negotiation and collections, and one-to-one coaching.',
-};
+  path: '/programmes',
+});
 
 export default function ProgrammesPage() {
   const flagship = PROGRAMMES.find((p) => p.slug === MASTERCLASS_SLUG)!;
