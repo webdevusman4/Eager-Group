@@ -16,7 +16,7 @@ export const PageHero: React.FC<{
   crumbs?: Crumb[];
   children?: React.ReactNode;
 }> = ({ eyebrow, title, intro, crumbs = [], children }) => (
-  <section className="surface-navy pb-16 pt-32 md:pb-20 md:pt-40">
+  <section className="surface-navy rounded-b-[28px] pb-16 pt-32 sm:rounded-b-[40px] md:pb-20 md:pt-40">
     <Container>
       <nav aria-label="Breadcrumb" className="mb-10">
         <ol className="flex flex-wrap items-center gap-1.5 text-sm text-white/60">

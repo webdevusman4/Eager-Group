@@ -18,7 +18,7 @@ export const ServiceCard: React.FC<{ service: Service; index: number; detailed?:
     <Link
       href={`/services/${service.slug}`}
       data-reveal
-      className="group relative flex h-full flex-col rounded-xl border border-[var(--line)] bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--royal)]/40 hover:shadow-[0_24px_48px_-24px_rgba(11,31,63,0.3)] sm:p-8"
+      className="group relative flex h-full flex-col rounded-3xl border border-[var(--line)] bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:border-[#0048A8]/40 hover:shadow-[0_24px_48px_-24px_rgba(11,31,63,0.3)] sm:p-8"
     >
       <div className="flex items-start justify-between">
         <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--royal-soft)] text-[var(--royal)] transition-colors duration-300 group-hover:bg-[var(--royal)] group-hover:text-white">
@@ -54,7 +54,7 @@ export const ProgrammeCard: React.FC<{ programme: Programme }> = ({ programme })
   <Link
     href={`/programmes/${programme.slug}`}
     data-reveal
-    className="group flex h-full flex-col overflow-hidden rounded-xl border border-[var(--line)] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_48px_-24px_rgba(11,31,63,0.3)]"
+    className="group flex h-full flex-col overflow-hidden rounded-3xl border border-[var(--line)] bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_48px_-24px_rgba(11,31,63,0.3)]"
   >
     <div className="relative aspect-[16/10] overflow-hidden">
       <Image
@@ -132,7 +132,7 @@ export const EnrolmentPanel: React.FC<{ glass?: boolean }> = ({ glass }) => {
   const line = onDark ? 'border-white/10 divide-white/10' : 'border-[var(--line)] divide-[var(--line)]';
 
   return (
-    <div className={`rounded-xl p-7 sm:p-8 ${glass ? 'glass-dark-strong' : 'border border-[var(--line)] bg-white shadow-[0_24px_48px_-28px_rgba(11,31,63,0.35)]'}`}>
+    <div className={`rounded-3xl p-7 sm:p-8 ${glass ? 'glass-dark-strong' : 'border border-[var(--line)] bg-white shadow-[0_24px_48px_-28px_rgba(11,31,63,0.35)]'}`}>
       <p className={`text-xs font-semibold uppercase tracking-[0.16em] ${muted}`}>Fee per participant</p>
       <p className={`font-serif mt-2 text-4xl ${strong}`}>{event.priceLabel}</p>
 
@@ -150,7 +150,7 @@ export const EnrolmentPanel: React.FC<{ glass?: boolean }> = ({ glass }) => {
           </div>
           <div className={`mt-2.5 h-1.5 overflow-hidden rounded-full ${onDark ? 'bg-white/10' : 'bg-[var(--royal-soft)]'}`}>
             <div
-              className={`h-full rounded-full ${onDark ? 'bg-[#8FC2FF]' : 'bg-[var(--royal)]'}`}
+              className={`h-full rounded-full ${onDark ? 'bg-[var(--gold-soft)]' : 'bg-[var(--royal)]'}`}
               style={{ width: `${Math.max(4, (taken / total) * 100)}%` }}
             />
           </div>
@@ -176,7 +176,7 @@ export const EnrolmentPanel: React.FC<{ glass?: boolean }> = ({ glass }) => {
         ))}
       </ul>
 
-      <Button href={reserveUrl} external variant={onDark ? 'light' : 'primary'} className="mt-8 w-full">
+      <Button href={reserveUrl} external variant={onDark ? 'gold' : 'primary'} className="mt-8 w-full">
         {soldOut ? 'Join the waitlist' : 'Reserve a place'}
       </Button>
       <p className={`mt-4 text-center text-xs leading-relaxed ${muted}`}>
@@ -192,7 +192,7 @@ export const EnrolmentPanel: React.FC<{ glass?: boolean }> = ({ glass }) => {
 export const SectorTicker: React.FC = () => {
   const sectors = content.ventures.industries;
   return (
-    <div className="border-y border-[var(--line)] bg-white py-6">
+    <div className="py-7">
       <div className="mx-auto flex max-w-7xl items-center gap-8 px-4 sm:px-6 lg:px-8">
         <p className="hidden shrink-0 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--muted)] md:block">
           Sectors served
@@ -202,7 +202,7 @@ export const SectorTicker: React.FC = () => {
             {[...sectors, ...sectors].map((s, i) => (
               <li key={`${s}-${i}`} className="flex items-center gap-10 whitespace-nowrap text-[15px] font-medium text-[var(--ink)]">
                 {s}
-                <span className="h-1 w-1 rounded-full bg-[var(--royal)]/50" />
+                <span className="h-1 w-1 rounded-full bg-[#0048A8]/50" />
               </li>
             ))}
           </ul>
@@ -222,7 +222,7 @@ export const RelatedList: React.FC<{ title: string; items: { label: string; href
     <h2 className="font-serif text-2xl text-[var(--ink)] sm:text-3xl">{title}</h2>
     <ul data-reveal-group className="mt-8 grid gap-4 md:grid-cols-3">
       {items.map((i) => (
-        <li key={i.href} data-reveal className="rounded-xl border border-[var(--line)] bg-white p-6">
+        <li key={i.href} data-reveal className="rounded-3xl border border-[var(--line)] bg-white p-6">
           <p className="font-semibold leading-snug text-[var(--ink)]">{i.label}</p>
           <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{i.text}</p>
           <div className="mt-5">

@@ -7,7 +7,7 @@ export const CtaBand: React.FC<{ title?: string; text?: string }> = ({
   title = 'Discuss your team, your targets or your next step.',
   text = 'Tell us what you are working on. We will reply with a suggested programme or a time to talk.',
 }) => (
-  <section aria-labelledby="cta-title" className="surface-navy py-20 md:py-28">
+  <section aria-labelledby="cta-title" className="surface-navy navy-panel my-2 py-20 sm:my-4 md:py-28">
     <Container>
       <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
         <div data-reveal className="lg:col-span-7">
@@ -17,16 +17,16 @@ export const CtaBand: React.FC<{ title?: string; text?: string }> = ({
           </h2>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/75">{text}</p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <Button href={SITE.consultUrl} external variant="light">
+            <Button href={SITE.consultUrl} external variant="gold">
               Message on WhatsApp
             </Button>
-            <Button href="/contact" variant="glass" arrow>
+            <Button href="/contact" variant="light" arrow>
               Send an enquiry
             </Button>
           </div>
         </div>
 
-        <div data-reveal className="glass-dark rounded-xl p-2 lg:col-span-5">
+        <div data-reveal className="glass-dark rounded-3xl p-2 lg:col-span-5">
           <ul className="divide-y divide-white/10">
             {[
               { icon: Phone, label: 'Phone and WhatsApp', value: SITE.phone, href: SITE.tel },
@@ -35,7 +35,7 @@ export const CtaBand: React.FC<{ title?: string; text?: string }> = ({
             ].map(({ icon: Icon, label, value, href }) => (
               <li key={label} className="flex items-center gap-4 p-5">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/10">
-                  <Icon className="h-[18px] w-[18px] text-[#8FC2FF]" aria-hidden="true" />
+                  <Icon className="h-[18px] w-[18px] text-[var(--gold-soft)]" aria-hidden="true" />
                 </span>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white/55">{label}</p>

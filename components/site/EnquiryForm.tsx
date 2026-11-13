@@ -73,7 +73,7 @@ export const EnquiryForm: React.FC<Props> = ({ whatsappNumber, email, topics, de
   };
 
   const input =
-    'mt-2 block w-full rounded-md border bg-white px-4 py-3 text-[15px] text-[var(--ink)] placeholder:text-[var(--muted)]/70 transition-colors focus:border-[var(--royal)] focus:outline-none focus:ring-2 focus:ring-[var(--royal)]/20';
+    'mt-2 block w-full rounded-2xl border bg-white px-4 py-3 text-[15px] text-[var(--ink)] placeholder:text-[#5D6685]/70 transition-colors focus:border-[var(--royal)] focus:outline-none focus:ring-2 focus:ring-[#0048A8]/20';
   const border = (k: keyof Fields) => (errors[k] ? 'border-red-400' : 'border-[var(--line)]');
 
   return (
@@ -131,11 +131,11 @@ export const EnquiryForm: React.FC<Props> = ({ whatsappNumber, email, topics, de
       </div>
 
       <div className="flex flex-col gap-3 pt-1 sm:flex-row">
-        <button type="submit" className="inline-flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-md bg-[var(--royal)] px-6 py-3 text-[15px] font-semibold text-white transition-colors hover:bg-[var(--royal-dark)]">
+        <button type="submit" className="inline-flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-full bg-[var(--navy)] px-6 py-3 text-[15px] font-semibold text-white transition-colors hover:bg-[var(--navy-mid)]">
           <MessageCircle className="h-[18px] w-[18px]" aria-hidden="true" />
           Send on WhatsApp
         </button>
-        <button type="button" onClick={() => send('email')} className="inline-flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-md border border-[var(--ink)]/20 bg-white px-6 py-3 text-[15px] font-semibold text-[var(--ink)] transition-colors hover:border-[var(--ink)]">
+        <button type="button" onClick={() => send('email')} className="inline-flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-full border border-[#0C1650]/20 bg-white px-6 py-3 text-[15px] font-semibold text-[var(--ink)] transition-colors hover:border-[var(--ink)]">
           <Mail className="h-[18px] w-[18px]" aria-hidden="true" />
           Send by email
         </button>

@@ -37,7 +37,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
       <Section labelledBy="service-detail">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
-            <span data-reveal className="flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--royal-soft)] text-[var(--royal)]">
+            <span data-reveal className="flex h-14 w-14 items-center justify-center rounded-3xl bg-[var(--royal-soft)] text-[var(--royal)]">
               <Icon className="h-6 w-6" aria-hidden="true" />
             </span>
             <h2 id="service-detail" data-reveal className="font-serif mt-8 text-3xl leading-snug text-[var(--ink)] sm:text-4xl">
@@ -55,7 +55,7 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
           </div>
 
           <aside data-reveal className="lg:col-span-5">
-            <div className="rounded-xl border border-[var(--line)] bg-[var(--paper)] p-8 lg:sticky lg:top-28">
+            <div className="rounded-3xl border border-[var(--line)] bg-[var(--paper)] p-8 lg:sticky lg:top-28">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--royal)]">Next step</p>
               <h3 className="font-serif mt-3 text-2xl text-[var(--ink)]">Discuss this service</h3>
               <p className="mt-3 text-[15px] leading-relaxed text-[var(--muted)]">

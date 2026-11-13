@@ -17,7 +17,7 @@ export const Section: React.FC<{
   children: React.ReactNode;
 }> = ({ id, tone = 'white', labelledBy, className = '', children }) => {
   const toneClass =
-    tone === 'navy' ? 'surface-navy' : tone === 'paper' ? 'bg-[var(--paper)] border-t border-[var(--line)]' : 'bg-white border-t border-[var(--line)]';
+    tone === 'navy' ? 'surface-navy navy-panel my-2 sm:my-4' : tone === 'paper' ? 'bg-[var(--paper)] border-t border-[var(--line)]' : 'bg-white border-t border-[var(--line)]';
   return (
     <section id={id} aria-labelledby={labelledBy} className={`scroll-mt-24 py-20 md:py-28 ${toneClass} ${className}`}>
       <Container>{children}</Container>
@@ -28,10 +28,10 @@ export const Section: React.FC<{
 export const Eyebrow: React.FC<{ children: React.ReactNode; onDark?: boolean }> = ({ children, onDark }) => (
   <p
     className={`flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] ${
-      onDark ? 'text-[#8FC2FF]' : 'text-[var(--royal)]'
+      onDark ? 'text-[var(--gold-soft)]' : 'text-[var(--royal)]'
     }`}
   >
-    <span className={`h-px w-8 ${onDark ? 'bg-[#8FC2FF]/70' : 'bg-[var(--royal)]'}`} aria-hidden="true" />
+    <span className={`h-px w-8 ${onDark ? 'bg-[#E8CF95]/70' : 'bg-[var(--gold)]'}`} aria-hidden="true" />
     {children}
   </p>
 );
@@ -68,12 +68,14 @@ export const SectionHeading: React.FC<{
   </div>
 );
 
-type ButtonVariant = 'primary' | 'secondary' | 'light' | 'glass';
+type ButtonVariant = 'primary' | 'gold' | 'secondary' | 'light' | 'glass';
 
+/** primary = navy pill (on light), gold = champagne pill (on navy). */
 const BUTTON_STYLES: Record<ButtonVariant, string> = {
-  primary: 'bg-[var(--royal)] text-white border border-[var(--royal)] hover:bg-[var(--royal-dark)] shadow-[0_10px_24px_-12px_rgba(0,72,168,0.7)]',
-  secondary: 'bg-white text-[var(--ink)] border border-[var(--ink)]/20 hover:border-[var(--ink)]',
-  light: 'bg-white text-[var(--ink)] border border-white hover:bg-[#EEF3FB]',
+  primary: 'bg-[var(--navy)] text-white border border-[var(--navy)] hover:bg-[var(--navy-mid)] shadow-[0_12px_26px_-14px_rgba(10,18,96,0.8)]',
+  gold: 'bg-[var(--champagne)] text-[var(--navy)] border border-[var(--champagne)] hover:bg-[var(--champagne-hover)] shadow-[0_12px_28px_-14px_rgba(201,162,75,0.7)]',
+  secondary: 'bg-white text-[var(--ink)] border border-[#0C1650]/20 hover:border-[var(--ink)]',
+  light: 'bg-white text-[var(--navy)] border border-white hover:bg-[var(--paper)]',
   glass: 'glass-dark text-white hover:bg-white/15',
 };
 
@@ -85,7 +87,7 @@ export const Button: React.FC<{
   className?: string;
   children: React.ReactNode;
 }> = ({ href, variant = 'primary', external, arrow, className = '', children }) => {
-  const cls = `group inline-flex min-h-[48px] items-center justify-center gap-2 rounded-md px-6 py-3 text-[15px] font-semibold transition-all duration-200 ${BUTTON_STYLES[variant]} ${className}`;
+  const cls = `group inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-7 py-3 text-[15px] font-semibold transition-all duration-200 ${BUTTON_STYLES[variant]} ${className}`;
   const inner = (
     <>
       {children}
@@ -113,7 +115,7 @@ export const TextLink: React.FC<{
   children: React.ReactNode;
 }> = ({ href, external, onDark, children }) => {
   const cls = `group inline-flex items-center gap-1.5 text-sm font-semibold ${
-    onDark ? 'text-[#8FC2FF] hover:text-white' : 'text-[var(--royal)] hover:text-[var(--royal-dark)]'
+    onDark ? 'text-[var(--gold-soft)] hover:text-white' : 'text-[var(--royal)] hover:text-[var(--royal-dark)]'
   }`;
   const inner = (
     <>
@@ -135,7 +137,7 @@ export const TextLink: React.FC<{
 /** Short horizontal rule used as a list bullet. */
 export const Dash: React.FC<{ onDark?: boolean }> = ({ onDark }) => (
   <span
-    className={`mt-[11px] h-px w-3 shrink-0 ${onDark ? 'bg-[#8FC2FF]' : 'bg-[var(--royal)]'}`}
+    className={`mt-[11px] h-px w-3 shrink-0 ${onDark ? 'bg-[var(--gold-soft)]' : 'bg-[var(--royal)]'}`}
     aria-hidden="true"
   />
 );

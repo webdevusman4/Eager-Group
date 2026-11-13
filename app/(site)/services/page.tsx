@@ -39,7 +39,7 @@ export default function ServicesPage() {
         <SectionHeading id="services-process" eyebrow="How an engagement runs" title="Simple, clear and built around you" />
         <ol data-reveal-group className="mt-14 grid gap-5 md:grid-cols-3">
           {STEPS.map((s, i) => (
-            <li key={s.title} data-reveal className="relative rounded-xl border border-[var(--line)] bg-white p-8">
+            <li key={s.title} data-reveal className="relative rounded-3xl border border-[var(--line)] bg-white p-8">
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--royal)] text-sm font-semibold text-white">
                 {i + 1}
               </span>

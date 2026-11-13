@@ -55,12 +55,12 @@ export default function ContactPage() {
                       <a
                         href={href}
                         {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                        className="group flex items-center gap-4 rounded-xl border border-[var(--line)] bg-white p-4 transition-colors hover:border-[var(--royal)]/40"
+                        className="group flex items-center gap-4 rounded-3xl border border-[var(--line)] bg-white p-4 transition-colors hover:border-[#0048A8]/40"
                       >
                         {inner}
                       </a>
                     ) : (
-                      <div className="flex items-center gap-4 rounded-xl border border-[var(--line)] bg-white p-4">{inner}</div>
+                      <div className="flex items-center gap-4 rounded-3xl border border-[var(--line)] bg-white p-4">{inner}</div>
                     )}
                   </li>
                 );
@@ -69,7 +69,7 @@ export default function ContactPage() {
           </div>
 
           <div data-reveal className="lg:col-span-7">
-            <div className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-7 sm:p-10">
+            <div className="rounded-[28px] border border-[var(--line)] bg-white p-7 sm:p-10">
               <h2 id="contact-form-title" className="font-serif text-2xl text-[var(--ink)] sm:text-3xl">
                 Send an enquiry
               </h2>

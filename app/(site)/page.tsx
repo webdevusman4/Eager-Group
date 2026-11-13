@@ -8,6 +8,21 @@ import { CountUp } from '@/components/site/CountUp';
 import { CtaBand } from '@/components/site/CtaBand';
 import { EnrolmentPanel, ProgrammeCard, SectorTicker, ServiceCard } from '@/components/site/blocks';
 
+const FOUNDER_POINTS = [
+  {
+    title: 'Practical before theoretical.',
+    text: 'Every framework is built to be used at work the next morning, not studied and forgotten.',
+  },
+  {
+    title: 'He builds what he teaches.',
+    text: 'Founder of Eager Packaging, Eager Properties and Eager Teaching & Trainings, so the advice comes from real accounts and real targets.',
+  },
+  {
+    title: 'Results over rhetoric.',
+    text: 'Success means more revenue, protected margins, stronger teams and clearer careers.',
+  },
+];
+
 export default function HomePage() {
   const seatsLeft = getSeatsLeft();
   const soldOut = isSoldOut();
@@ -16,7 +31,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section aria-labelledby="home-title" className="surface-navy pb-16 pt-32 md:pb-20 md:pt-40">
+      <section aria-labelledby="home-title" className="surface-navy rounded-b-[28px] pb-16 pt-32 sm:rounded-b-[40px] md:pb-20 md:pt-40">
         <Container>
           <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-12">
             <div data-reveal className="lg:col-span-7">
@@ -24,24 +39,24 @@ export default function HomePage() {
               <h1 id="home-title" className="font-serif mt-6 text-[clamp(2.5rem,5.4vw,4.25rem)] leading-[1.05] text-white">
                 Empowering people.
                 <br />
-                <span className="italic font-normal text-[#B9D6FF]">Transforming businesses.</span>
+                <span className="font-normal italic text-[var(--champagne)]">Transforming businesses.</span>
               </h1>
               <p className="mt-7 max-w-xl text-lg leading-relaxed text-white/75">
                 {SITE.person} works with founders, executives and sales teams to build revenue systems that last. His
                 advice comes from fifteen years of selling, managing teams and running three companies of his own.
               </p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                <Button href={SITE.consultUrl} external variant="light">
+                <Button href={SITE.consultUrl} external variant="gold" arrow>
                   Book a consultation
                 </Button>
-                <Button href="/programmes" variant="glass" arrow>
+                <Button href="/programmes" variant="glass">
                   Explore programmes
                 </Button>
               </div>
             </div>
 
             <div data-reveal className="relative mx-auto w-full max-w-lg lg:col-span-5 lg:max-w-none">
-              <div className="relative overflow-hidden rounded-2xl border border-white/15">
+              <div className="relative overflow-hidden rounded-[28px] border border-white/15">
                 <Image
                   src="/images/v2/iftikhar-executive-desk.webp"
                   alt={`${SITE.person} at his desk`}
@@ -51,20 +66,19 @@ export default function HomePage() {
                   sizes="(min-width: 1024px) 480px, (min-width: 640px) 512px, 100vw"
                   className="h-auto w-full"
                 />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#081830]/70 to-transparent" />
-                <div className="glass-dark absolute left-4 top-4 rounded-lg px-3.5 py-2">
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#050A36]/70 to-transparent" />
+                <div className="glass-dark absolute left-4 top-4 rounded-full px-4 py-2">
                   <p className="text-sm font-semibold text-white">{SITE.person}</p>
-                  <p className="text-xs text-white/70">Founder, Eager Group</p>
                 </div>
               </div>
 
               <Link
                 href={`/programmes/${MASTERCLASS_SLUG}`}
-                className="glass group relative mt-4 block rounded-xl p-5 transition-transform duration-300 hover:-translate-y-0.5 sm:absolute sm:-bottom-10 sm:-left-8 sm:mt-0 sm:w-[300px]"
+                className="glass group relative mt-4 block rounded-3xl p-5 transition-transform duration-300 hover:-translate-y-0.5 sm:absolute sm:-bottom-10 sm:-left-8 sm:mt-0 sm:w-[300px]"
               >
                 <div className="flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--royal)]">
-                    <CalendarDays className="h-3.5 w-3.5" aria-hidden="true" />
+                  <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--navy)]">
+                    <CalendarDays className="h-3.5 w-3.5 text-[var(--gold)]" aria-hidden="true" />
                     Next cohort
                   </span>
                   {seatsLeft !== null && (
@@ -89,7 +103,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <dl data-reveal-group className="glass-dark mt-16 grid grid-cols-2 rounded-xl sm:mt-24 lg:grid-cols-4">
+          <dl data-reveal-group className="glass-dark mt-16 grid grid-cols-2 rounded-3xl sm:mt-24 lg:grid-cols-4">
             {FIGURES.map((f, i) => (
               <div
                 key={f.label}
@@ -126,8 +140,90 @@ export default function HomePage() {
         </div>
       </Section>
 
+      {/* Founder */}
+      <Section tone="navy" labelledBy="home-founder">
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-7">
+            <SectionHeading
+              id="home-founder"
+              eyebrow="The founder"
+              title="From the sales floor to three companies."
+              intro={`${SITE.person} spent fifteen years selling, leading sales teams and growing businesses before founding Eager Group. Today he trains, advises and coaches the people doing the same work.`}
+              onDark
+            />
+
+            <ol data-reveal-group className="mt-12 space-y-9">
+              {FOUNDER_POINTS.map((p, i) => (
+                <li key={p.title} data-reveal className="grid grid-cols-[64px_1fr] gap-5 sm:grid-cols-[80px_1fr]">
+                  <span className="font-serif text-5xl font-normal leading-none text-white/35 sm:text-6xl">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div className="border-b border-white/10 pb-8">
+                    <h3 className="text-lg font-semibold text-white sm:text-xl">{p.title}</h3>
+                    <p className="mt-2 text-[15px] leading-relaxed text-white/65">{p.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <blockquote data-reveal className="mt-10">
+              <p className="font-serif text-2xl font-normal italic leading-snug text-white sm:text-[1.75rem]">
+                “I help people discover their hidden potential and turn it into real-world results.”
+              </p>
+              <footer className="mt-3 text-sm text-white/55">{SITE.person}, Founder of Eager Group</footer>
+            </blockquote>
+
+            <div data-reveal className="mt-12">
+              <p className="font-serif text-2xl leading-snug text-[var(--gold-soft)] sm:text-3xl">“I don’t just train businesses. I build and grow them.”</p>
+              <div className="mt-4">
+                <TextLink href="/about" onDark>
+                  Read his story
+                </TextLink>
+              </div>
+            </div>
+          </div>
+
+          <div data-reveal className="lg:col-span-5">
+            <div className="lg:sticky lg:top-28">
+              <figure className="relative overflow-hidden rounded-[28px] border border-white/15 bg-white/5">
+                <Image
+                  src="/images/v2/iftikhar-keynote.webp"
+                  alt={`${SITE.person} speaking at a corporate event`}
+                  width={721}
+                  height={687}
+                  sizes="(min-width: 1024px) 440px, 100vw"
+                  className="h-auto w-full"
+                />
+                <figcaption className="glass-dark-strong absolute bottom-4 left-4 rounded-2xl px-4 py-2.5">
+                  <span className="block text-xs font-semibold uppercase tracking-[0.14em] text-white">{SITE.person}</span>
+                  <span className="block text-xs text-white/65">Certified Corporate Trainer &amp; Business Consultant</span>
+                </figcaption>
+              </figure>
+
+              <div className="glass-dark mt-4 rounded-3xl p-5">
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-semibold text-white">At a glance</p>
+                  <span className="text-xs text-[var(--gold-soft)]">Eager Group</span>
+                </div>
+                <dl className="mt-4 grid grid-cols-3 gap-2 text-center">
+                  {FIGURES.slice(0, 3).map((f, i) => (
+                    <div key={f.label} className="rounded-2xl bg-white/[0.06] px-2 py-3">
+                      <dd className="font-serif text-2xl text-white">
+                        {f.value}
+                        {f.suffix}
+                      </dd>
+                      <dt className="mt-1 text-[11px] leading-tight text-white/60">{['Years of experience', 'Companies founded', 'Practices'][i]}</dt>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
       {/* Flagship */}
-      <Section tone="navy" labelledBy="home-flagship">
+      <Section tone="paper" labelledBy="home-flagship">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-7">
             <SectionHeading
@@ -135,66 +231,27 @@ export default function HomePage() {
               eyebrow="Flagship programme"
               title="The 8-Hour Executive Sales Masterclass"
               intro="One day covering the full sale, from finding the right prospects to collecting payment and keeping the client. Places are capped so every participant works directly with Iftikhar."
-              onDark
             />
             <ol data-reveal-group className="mt-12 grid gap-4 sm:grid-cols-2">
               {content.curriculum.modules.map((m) => (
-                <li key={m.id} data-reveal className="glass-dark rounded-xl p-6 transition-colors duration-300 hover:bg-white/10">
-                  <span className="font-serif text-2xl text-[#8FC2FF]">{m.id}</span>
-                  <p className="mt-3 font-semibold leading-snug text-white">{m.title}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-white/65">{m.outcome}</p>
+                <li
+                  key={m.id}
+                  data-reveal
+                  className="rounded-3xl border border-[var(--line)] bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#C9A24B]/50 hover:shadow-[0_20px_40px_-24px_rgba(10,18,96,0.35)]"
+                >
+                  <span className="font-serif text-3xl text-[var(--gold)]">{m.id}</span>
+                  <p className="mt-3 font-semibold leading-snug text-[var(--ink)]">{m.title}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{m.outcome}</p>
                 </li>
               ))}
             </ol>
             <div data-reveal className="mt-10">
-              <TextLink href={`/programmes/${MASTERCLASS_SLUG}`} onDark>
-                See the full programme
-              </TextLink>
+              <TextLink href={`/programmes/${MASTERCLASS_SLUG}`}>See the full programme</TextLink>
             </div>
           </div>
           <div data-reveal className="lg:col-span-5">
-            <EnrolmentPanel glass />
-          </div>
-        </div>
-      </Section>
-
-      {/* About */}
-      <Section tone="paper" labelledBy="home-about">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          <div data-reveal className="relative lg:col-span-5">
-            <div className="overflow-hidden rounded-2xl">
-              <Image
-                src="/images/v2/iftikhar-keynote.webp"
-                alt={`${SITE.person} speaking at a corporate event`}
-                width={721}
-                height={687}
-                sizes="(min-width: 1024px) 440px, 100vw"
-                className="h-auto w-full"
-              />
-            </div>
-            <blockquote className="glass relative -mt-16 ml-6 mr-6 rounded-xl p-6 sm:ml-10 sm:mr-0 sm:max-w-sm">
-              <p className="font-serif text-lg font-normal italic leading-snug text-[var(--ink)]">
-                “I don’t just train businesses. I build and grow them.”
-              </p>
-              <footer className="mt-3 text-sm text-[var(--muted)]">{SITE.person}</footer>
-            </blockquote>
-          </div>
-          <div className="lg:col-span-7">
-            <SectionHeading id="home-about" eyebrow="About" title="A trainer and consultant who runs his own businesses" />
-            <div data-reveal className="mt-8 space-y-5 text-[17px] leading-relaxed">
-              <p>
-                {SITE.person} is a certified corporate trainer, sales and marketing specialist, business consultant and
-                keynote speaker with more than fifteen years of experience growing revenue and building sales teams.
-              </p>
-              <p>
-                He has trained corporate teams, small businesses, universities and schools across Pakistan, and coaches
-                executives, professionals and investors one to one.
-              </p>
-            </div>
-            <div data-reveal className="mt-8">
-              <Button href="/about" variant="secondary" arrow>
-                More about Iftikhar
-              </Button>
+            <div className="lg:sticky lg:top-28">
+              <EnrolmentPanel />
             </div>
           </div>
         </div>
@@ -226,10 +283,11 @@ export default function HomePage() {
           split
         />
         <div data-reveal-group className="mt-14 grid gap-5 md:grid-cols-3">
-          {content.ventures.companies.map((c) => (
-            <article key={c.id} data-reveal className="rounded-xl border border-[var(--line)] bg-white p-7">
-              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--royal)]">{c.sector}</p>
-              <h3 className="font-serif mt-3 text-xl leading-snug text-[var(--ink)]">{c.name}</h3>
+          {content.ventures.companies.map((c, i) => (
+            <article key={c.id} data-reveal className="rounded-3xl border border-[var(--line)] bg-white p-7">
+              <span className="font-serif text-2xl text-[var(--gold)]">{String(i + 1).padStart(2, '0')}</span>
+              <p className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--royal)]">{c.sector}</p>
+              <h3 className="font-serif mt-2 text-xl leading-snug text-[var(--ink)]">{c.name}</h3>
               <p className="mt-3 text-[15px] leading-relaxed text-[var(--muted)]">{COMPANY_SUMMARIES[c.id] ?? c.description}</p>
             </article>
           ))}
@@ -249,7 +307,7 @@ export default function HomePage() {
             { src: '/images/v2/iftikhar-podcast.webp', title: 'Media and commentary', text: 'Conversations on entrepreneurship, sales and investing in Pakistan.' },
           ].map((p) => (
             <figure key={p.src} data-reveal className="group">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
                 <Image src={p.src} alt="" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
               </div>
               <figcaption className="mt-5">

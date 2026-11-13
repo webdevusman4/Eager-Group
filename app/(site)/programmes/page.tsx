@@ -75,7 +75,7 @@ export default function ProgrammesPage() {
         <SectionHeading id="programmes-audience" eyebrow="Who they are for" title="Built for people responsible for results" />
         <div data-reveal-group className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {AUDIENCES.map((a) => (
-            <article key={a.title} data-reveal className="flex flex-col rounded-xl border border-[var(--line)] bg-white p-7">
+            <article key={a.title} data-reveal className="flex flex-col rounded-3xl border border-[var(--line)] bg-white p-7">
               <h3 className="font-semibold leading-snug text-[var(--ink)]">{a.title}</h3>
               <p className="mt-3 text-[15px] leading-relaxed text-[var(--muted)]">{a.text}</p>
               <p className="mt-auto pt-6 text-sm">
