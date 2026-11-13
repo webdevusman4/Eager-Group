@@ -37,13 +37,13 @@ export const ModuleExplorer: React.FC = () => {
               tabIndex={selected ? 0 : -1}
               onClick={() => setActive(i)}
               onKeyDown={(e) => onKey(e, i)}
-              className={`flex w-full items-start gap-4 rounded-lg border p-4 text-left transition-all duration-300 ${
+              className={`flex w-full items-start gap-4 rounded-2xl border p-4 text-left transition-all duration-300 ${
                 selected
-                  ? 'border-[var(--royal)] bg-white shadow-[0_16px_32px_-20px_rgba(0,72,168,0.5)]'
-                  : 'border-[var(--line)] bg-white/60 hover:border-[var(--royal)]/40 hover:bg-white'
+                  ? 'border-[var(--navy)] bg-white shadow-[0_16px_32px_-20px_rgba(10,18,96,0.55)]'
+                  : 'border-[var(--line)] bg-white/60 hover:border-[#0048A8]/40 hover:bg-white'
               }`}
             >
-              <span className={`font-serif text-2xl leading-none ${selected ? 'text-[var(--royal)]' : 'text-[var(--muted)]'}`}>
+              <span className={`font-serif text-2xl leading-none ${selected ? 'text-[var(--gold)]' : 'text-[var(--muted)]'}`}>
                 {mod.id}
               </span>
               <span>
@@ -61,7 +61,7 @@ export const ModuleExplorer: React.FC = () => {
         id="module-panel"
         role="tabpanel"
         aria-labelledby={`module-tab-${m.id}`}
-        className="rounded-xl border border-[var(--line)] bg-white p-7 sm:p-9"
+        className="rounded-3xl border border-[var(--line)] bg-white p-7 sm:p-9"
       >
         <div key={m.id} className="animate-[site-panel_0.45s_cubic-bezier(0.16,1,0.3,1)]">
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--royal)]">
@@ -79,7 +79,7 @@ export const ModuleExplorer: React.FC = () => {
               </li>
             ))}
           </ul>
-          <p className="mt-8 rounded-lg bg-[var(--paper)] px-4 py-3 text-sm text-[var(--muted)]">
+          <p className="mt-8 rounded-2xl bg-[var(--paper)] px-4 py-3 text-sm text-[var(--muted)]">
             Workbook tool: <span className="font-semibold text-[var(--ink)]">{m.deliverable}</span>
           </p>
         </div>

@@ -74,8 +74,8 @@ export default function AboutPage() {
         <SectionHeading id="about-principles" eyebrow="How he works" title="Three principles behind every engagement" />
         <ol data-reveal-group className="mt-14 grid gap-5 md:grid-cols-3">
           {PRINCIPLES.map((p, i) => (
-            <li key={p.title} data-reveal className="rounded-xl border border-[var(--line)] bg-white p-8">
-              <span className="font-serif text-3xl text-[var(--royal)]">{String(i + 1).padStart(2, '0')}</span>
+            <li key={p.title} data-reveal className="rounded-3xl border border-[var(--line)] bg-white p-8">
+              <span className="font-serif text-3xl text-[var(--gold)]">{String(i + 1).padStart(2, '0')}</span>
               <h3 className="mt-4 text-lg font-semibold text-[var(--ink)]">{p.title}</h3>
               <p className="mt-2 text-[15px] leading-relaxed text-[var(--muted)]">{p.text}</p>
             </li>
@@ -90,7 +90,7 @@ export default function AboutPage() {
           </div>
           <ul data-reveal-group className="grid gap-x-8 sm:grid-cols-2 lg:col-span-7">
             {content.ventures.industries.map((s) => (
-              <li key={s} data-reveal className="flex items-center gap-3 border-b border-[var(--line)] py-4 text-[15px] font-medium text-[var(--ink)]">
+              <li key={s} data-reveal className="flex gap-3 border-b border-[var(--line)] py-4 text-[15px] font-medium text-[var(--ink)]">
                 <Dash />
                 {s}
               </li>

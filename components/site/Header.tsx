@@ -4,9 +4,10 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, Phone, X } from 'lucide-react';
+import { ArrowRight, Menu, Phone, X } from 'lucide-react';
 import { NAV_LINKS, SITE } from '@/lib/site';
 
+/** Floating pill navigation using the .glass-arctic surfaces. */
 export const Header: React.FC = () => {
   const pathname = usePathname() ?? '/';
   const [open, setOpen] = useState(false);
@@ -31,56 +32,56 @@ export const Header: React.FC = () => {
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-4">
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
       <div
-        className={`glass mx-auto max-w-7xl rounded-xl transition-shadow duration-300 ${
-          scrolled || open ? 'shadow-[0_16px_40px_-16px_rgba(11,31,63,0.35)]' : ''
-        } ${open ? '!bg-white/[0.97]' : ''}`}
+        className={`mx-auto max-w-6xl rounded-full transition-all duration-300 ${
+          scrolled || open ? 'glass-arctic-scrolled' : 'glass-arctic'
+        }`}
       >
-        <nav aria-label="Main navigation" className="flex h-16 items-center justify-between gap-6 px-4 sm:px-5 lg:h-[68px]">
-          <Link href="/" aria-label="Eager Consulting & Training home" className="flex shrink-0 items-center gap-4">
-            <Image src="/logo.png" alt="Eager" width={164} height={42} priority className="h-7 w-auto lg:h-8" />
-            <span className="hidden border-l border-[var(--line)] pl-4 text-[10.5px] font-semibold uppercase leading-tight tracking-[0.14em] text-[var(--muted)] xl:block">
+        <nav aria-label="Main navigation" className="flex h-14 items-center justify-between gap-4 pl-5 pr-2 sm:h-16 sm:pl-6">
+          <Link href="/" aria-label="Eager Consulting & Training home" className="flex shrink-0 items-center gap-3.5">
+            <Image src="/logo.png" alt="Eager" width={164} height={42} priority className="h-6 w-auto sm:h-7" />
+            <span className="hidden border-l border-[#0A1260]/15 pl-3.5 text-[10px] font-semibold uppercase leading-tight tracking-[0.14em] text-[var(--muted)] xl:block">
               Consulting
               <br />
               &amp; Training
             </span>
           </Link>
 
-          <ul className="hidden items-center gap-1 lg:flex">
+          <ul className="hidden items-center gap-0.5 lg:flex">
             {NAV_LINKS.map((l) => (
               <li key={l.href}>
                 <Link
                   href={l.href}
                   aria-current={isActive(l.href) ? 'page' : undefined}
-                  className={`relative rounded-md px-3.5 py-2 text-sm font-medium transition-colors ${
-                    isActive(l.href) ? 'text-[var(--royal)]' : 'text-[var(--ink)] hover:text-[var(--royal)]'
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                    isActive(l.href)
+                      ? 'bg-[var(--navy)] text-white'
+                      : 'text-[var(--ink)] hover:bg-[#0A1260]/[0.06] hover:text-[var(--navy)]'
                   }`}
                 >
                   {l.label}
-                  <span
-                    aria-hidden="true"
-                    className={`absolute inset-x-3.5 -bottom-0.5 h-0.5 rounded-full bg-[var(--royal)] transition-transform duration-300 ${
-                      isActive(l.href) ? 'scale-x-100' : 'scale-x-0'
-                    }`}
-                  />
                 </Link>
               </li>
             ))}
           </ul>
 
-          <div className="hidden items-center gap-4 lg:flex">
-            <a href={SITE.tel} className="flex items-center gap-2 text-sm font-medium text-[var(--muted)] hover:text-[var(--royal)]">
+          <div className="hidden items-center gap-2 lg:flex">
+            <a
+              href={SITE.tel}
+              aria-label={`Call ${SITE.phone}`}
+              className="flex h-10 w-10 items-center justify-center rounded-full text-[var(--navy)] transition-colors hover:bg-[#0A1260]/[0.06]"
+            >
               <Phone className="h-4 w-4" aria-hidden="true" />
-              {SITE.phone}
             </a>
             <a
               href={SITE.consultUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center rounded-md bg-[var(--royal)] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[var(--royal-dark)]"
+              className="group inline-flex items-center gap-1.5 rounded-full bg-[var(--champagne)] px-5 py-2.5 text-sm font-semibold text-[var(--navy)] transition-colors hover:bg-[var(--champagne-hover)]"
             >
               Book a consultation
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
             </a>
           </div>
 
@@ -90,47 +91,49 @@ export const Header: React.FC = () => {
             aria-expanded={open}
             aria-controls="site-mobile-menu"
             aria-label={open ? 'Close menu' : 'Open menu'}
-            className="-mr-1.5 inline-flex h-11 w-11 items-center justify-center rounded-md text-[var(--ink)] lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[var(--navy)] text-white lg:hidden"
           >
-            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </nav>
+      </div>
 
-        <div
-          id="site-mobile-menu"
-          hidden={!open}
-          className="border-t border-[var(--line)]/80 px-4 pb-5 sm:px-5 lg:hidden"
-        >
-          <ul className="py-2">
-            {NAV_LINKS.map((l) => (
-              <li key={l.href} className="border-b border-[var(--line)]/70 last:border-b-0">
-                <Link
-                  href={l.href}
-                  aria-current={isActive(l.href) ? 'page' : undefined}
-                  className={`block py-3.5 text-base font-medium ${isActive(l.href) ? 'text-[var(--royal)]' : 'text-[var(--ink)]'}`}
-                >
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div className="grid gap-2 sm:grid-cols-2">
-            <a
-              href={SITE.consultUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center rounded-md bg-[var(--royal)] px-5 py-3 text-sm font-semibold text-white"
-            >
-              Book a consultation
-            </a>
-            <a
-              href={SITE.tel}
-              className="flex items-center justify-center gap-2 rounded-md border border-[var(--line)] bg-white px-5 py-3 text-sm font-semibold text-[var(--ink)]"
-            >
-              <Phone className="h-4 w-4" aria-hidden="true" />
-              {SITE.phone}
-            </a>
-          </div>
+      <div
+        id="site-mobile-menu"
+        hidden={!open}
+        className="glass-arctic-scrolled mx-auto mt-2 max-w-6xl rounded-3xl !bg-white/[0.97] p-3 lg:hidden"
+      >
+        <ul>
+          {NAV_LINKS.map((l) => (
+            <li key={l.href}>
+              <Link
+                href={l.href}
+                aria-current={isActive(l.href) ? 'page' : undefined}
+                className={`block rounded-2xl px-4 py-3.5 text-base font-medium ${
+                  isActive(l.href) ? 'bg-[var(--navy)] text-white' : 'text-[var(--ink)]'
+                }`}
+              >
+                {l.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-2 grid gap-2 border-t border-[var(--line)] pt-3 sm:grid-cols-2">
+          <a
+            href={SITE.consultUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center rounded-full bg-[var(--champagne)] px-5 py-3 text-sm font-semibold text-[var(--navy)]"
+          >
+            Book a consultation
+          </a>
+          <a
+            href={SITE.tel}
+            className="flex items-center justify-center gap-2 rounded-full border border-[var(--line)] bg-white px-5 py-3 text-sm font-semibold text-[var(--navy)]"
+          >
+            <Phone className="h-4 w-4" aria-hidden="true" />
+            {SITE.phone}
+          </a>
         </div>
       </div>
     </header>

@@ -52,9 +52,9 @@ export default async function ProgrammePage({ params }: { params: Promise<Params
       >
         <dl data-reveal-group className={`mt-12 grid gap-3 sm:grid-cols-2 ${isFlagship ? 'lg:grid-cols-4' : 'lg:grid-cols-3'}`}>
           {facts.map(({ icon: Icon, label, value }) => (
-            <div key={label} data-reveal className="glass-dark flex items-center gap-4 rounded-xl p-4">
+            <div key={label} data-reveal className="glass-dark flex items-center gap-4 rounded-3xl p-4">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/10">
-                <Icon className="h-[18px] w-[18px] text-[#8FC2FF]" aria-hidden="true" />
+                <Icon className="h-[18px] w-[18px] text-[var(--gold-soft)]" aria-hidden="true" />
               </span>
               <div>
                 <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-white/55">{label}</dt>
@@ -114,7 +114,7 @@ export default async function ProgrammePage({ params }: { params: Promise<Params
               </ul>
             </div>
             <aside data-reveal className="lg:col-span-5">
-              <div className="overflow-hidden rounded-xl border border-[var(--line)] bg-white lg:sticky lg:top-28">
+              <div className="overflow-hidden rounded-3xl border border-[var(--line)] bg-white lg:sticky lg:top-28">
                 <div className="relative aspect-[16/10]">
                   <Image src={programme.image} alt="" fill sizes="(min-width: 1024px) 460px, 100vw" className="object-cover" />
                 </div>
