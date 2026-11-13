@@ -5,7 +5,10 @@ const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
   },
+  async redirects() {
+    // The /v3 preview became the main site at "/".
+    return [{ source: '/v3/:path*', destination: '/', permanent: false }];
+  },
 };
 
 export default nextConfig;
-

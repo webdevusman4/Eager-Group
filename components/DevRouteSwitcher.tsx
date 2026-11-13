@@ -4,50 +4,33 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+const VERSIONS = [
+  { label: 'New site (/)', href: '/', match: (p: string) => !p.startsWith('/v1') && !p.startsWith('/v2') },
+  { label: 'Original (/v1)', href: '/v1', match: (p: string) => p.startsWith('/v1') },
+  { label: 'Arena (/v2)', href: '/v2', match: (p: string) => p.startsWith('/v2') },
+];
+
+/** Development-only toggle between the site versions. Renders nothing in production. */
 export const DevRouteSwitcher: React.FC = () => {
-  const pathname = usePathname();
-
-  if (process.env.NODE_ENV === 'production') {
-    return null;
-  }
-
-  const isV2 = pathname?.startsWith('/v2');
-  const isV3 = pathname?.startsWith('/v3');
+  const pathname = usePathname() ?? '/';
+  if (process.env.NODE_ENV === 'production') return null;
 
   return (
     <div
       aria-label="Preview version switcher"
-      className="fixed bottom-20 left-4 md:bottom-6 md:left-5 z-50 inline-flex items-center gap-1 rounded-full p-1.5 bg-[#041A3B]/95 backdrop-blur-xl border border-[#10ACFC]/45 text-xs font-semibold shadow-2xl"
+      className="fixed bottom-4 left-4 z-[60] inline-flex items-center gap-1 rounded-full border border-white/20 bg-[#081830]/90 p-1 text-[11px] font-semibold shadow-xl backdrop-blur"
     >
-      <Link
-        href="/"
-        className={`rounded-full px-3.5 py-1.5 transition-all ${
-          !isV2 && !isV3
-            ? 'bg-[#10ACFC] text-[#041A3B] font-bold shadow-sm'
-            : 'text-white/75 hover:text-white'
-        }`}
-      >
-        Original (/)
-      </Link>
-      <Link
-        href="/v2"
-        className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 transition-all ${
-          isV2
-            ? 'bg-[#10ACFC] text-[#041A3B] font-bold shadow-sm'
-            : 'text-white hover:bg-white/10'
-        }`}
-      >
-        {!isV2 && <span className="w-2 h-2 rounded-full bg-[#10ACFC] animate-pulse" />}
-        <span>Redesigned (/v2)</span>
-      </Link>
-      <Link
-        href="/v3"
-        className={`rounded-full px-3.5 py-1.5 transition-all ${
-          isV3 ? 'bg-[#10ACFC] text-[#041A3B] font-bold shadow-sm' : 'text-white/75 hover:text-white'
-        }`}
-      >
-        Corporate hero (/v3)
-      </Link>
+      {VERSIONS.map((v) => (
+        <Link
+          key={v.href}
+          href={v.href}
+          className={`rounded-full px-3 py-1.5 transition-colors ${
+            v.match(pathname) ? 'bg-white text-[#0B1F3F]' : 'text-white/75 hover:text-white'
+          }`}
+        >
+          {v.label}
+        </Link>
+      ))}
     </div>
   );
 };

@@ -1,0 +1,136 @@
+@import '@fontsource/source-serif-4/500.css';
+@import '@fontsource/source-serif-4/600.css';
+@import '@fontsource/source-serif-4/400-italic.css';
+
+/* Main site theme. Primary colour is the EAGER wordmark blue (#0048A8) from public/logo.png. */
+.site-root {
+  --ink: #0b1f3f;
+  --text: #33435c;
+  --muted: #5e6b80;
+  --royal: #0048a8;
+  --royal-dark: #003a8c;
+  --royal-soft: #e9f0fa;
+  --sky: #10acfc;
+  --line: #dde3ec;
+  --paper: #f6f7f9;
+  --navy: #0b1f3f;
+  --navy-deep: #081830;
+
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  color: var(--text);
+  background: #ffffff;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.site-root .font-serif {
+  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.site-root ::selection { background: var(--royal); color: #fff; }
+.site-root :focus-visible { outline: 2px solid var(--royal); outline-offset: 3px; }
+.site-root .surface-navy :focus-visible { outline-color: #8fc2ff; }
+
+/* ---------- Glass ---------- */
+.glass {
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 10px 34px -14px rgba(11, 31, 63, 0.22);
+}
+
+.glass-dark {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.glass-dark-strong {
+  background: rgba(8, 24, 48, 0.62);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 20px 44px -18px rgba(0, 0, 0, 0.55);
+}
+
+/* ---------- Navy surface with slow ambient light ---------- */
+.surface-navy {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--navy);
+  color: #ffffff;
+}
+
+.surface-navy::before,
+.surface-navy::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  border-radius: 9999px;
+  pointer-events: none;
+  filter: blur(60px);
+}
+
+.surface-navy::before {
+  width: 640px;
+  height: 640px;
+  top: -260px;
+  right: -160px;
+  background: radial-gradient(circle, rgba(0, 72, 168, 0.75) 0%, transparent 70%);
+  animation: site-drift 22s ease-in-out infinite alternate;
+}
+
+.surface-navy::after {
+  width: 520px;
+  height: 520px;
+  bottom: -280px;
+  left: -140px;
+  background: radial-gradient(circle, rgba(16, 172, 252, 0.22) 0%, transparent 70%);
+  animation: site-drift 26s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes site-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-60px, 40px, 0); }
+}
+
+/* ---------- Scroll reveal (only hides content once JS is running) ---------- */
+.site-root.reveal-ready [data-reveal]:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.site-root [data-reveal] {
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes site-panel {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- Sector ticker ---------- */
+.ticker { mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.ticker-track { animation: site-ticker 45s linear infinite; }
+.ticker:hover .ticker-track { animation-play-state: paused; }
+@keyframes site-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Native details accordion ---------- */
+.site-root summary { list-style: none; }
+.site-root summary::-webkit-details-marker { display: none; }
+.site-root details[open] .faq-icon { transform: rotate(45deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .surface-navy::before,
+  .surface-navy::after,
+  .ticker-track { animation: none; }
+  .site-root.reveal-ready [data-reveal]:not(.is-visible) { opacity: 1; transform: none; }
+}
