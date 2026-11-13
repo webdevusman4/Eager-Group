@@ -23,8 +23,38 @@ A full extraction of what this repository contains, how it is built, what each p
 | `65fb786` | Usman | 2026-11-09 | feat: complete executive sales masterclass landing page |
 | `9dc5816` | webdevusman4 | 2026-11-13 | feat(v2): add redesigned Eager Group executive profile and courses landing page |
 | `d13768e` | Usman | 2026-11-13 | Merge pull request #1 (`arena/6864e1cf-eager-group`) |
+| `8e089b2` | Usman | 2026-11-13 | upload (adds one blank line to `.gitignore`) |
+| `8a81ff9` | Usman | 2026-11-13 | Merge branch 'main' of github.com/webdevusman4/Eager-Group |
 
-Branches: `main`, `claude/focused-edison-fd370z`.
+Branches: `main`, `arena/6864e1cf-eager-group`, `claude/focused-edison-fd370z`. There are no git tags.
+
+### Arena AI contribution
+
+The whole `/v2` redesign came from Arena AI's agent.
+
+| Item | Value |
+|---|---|
+| Branch | `arena/6864e1cf-eager-group` (still on the remote) |
+| Commit | `9dc5816` "feat(v2): add redesigned Eager Group executive profile and courses landing page" |
+| Committed | 2026-11-13 11:34 UTC |
+| Co-author trailer | `arena-agent <297053741+arena-agent@users.noreply.github.com>` |
+| Merged | Pull request #1, merged to `main` by Usman at 11:38 UTC the same day |
+| Size | 32 files, 2,888 lines added, 63 removed |
+
+What the Arena commit added:
+
+- The `/v2` route: `app/v2/layout.tsx`, `app/v2/page.tsx`, `app/v2/v2.css`.
+- All of `components/v2/` (10 sections, 5 UI primitives, its own placeholder scanner).
+- `lib/content-v2.ts`, the 756-line content file for `/v2`.
+- Six photos in `public/images/v2/`.
+- `components/DevRouteSwitcher.tsx`, the dev-only toggle between `/` and `/v2`.
+
+What it changed in existing files:
+
+- `app/layout.tsx`: mounts `DevRouteSwitcher`.
+- `components/PlaceholderScanner.tsx`: skips `/v2` routes and re-runs on route change.
+- `next.config.mjs`: adds `allowedDevOrigins` for E2B sandbox hosts.
+- `package.json`: adds the three `@fontsource` font packages.
 
 ---
 
@@ -273,7 +303,7 @@ v2 masterclass modules add a named deliverable per module: Pipeline Qualificatio
 
 ## 9. Build and verification status
 
-Checked on 2026-11-13 with a clean `npm ci`.
+Checked on 2026-11-13 with a clean `npm ci`. The only commit since then changes a blank line in `.gitignore`, so these results still hold.
 
 | Check | Result |
 |---|---|
