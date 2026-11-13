@@ -1,0 +1,62 @@
+@import '@fontsource/plus-jakarta-sans/600.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/plus-jakarta-sans/800.css';
+
+/* Corporate Royal theme (scoped to /v3)
+   Built from public/logo.png:
+   - Wordmark royal blue #0048A8 is the primary brand colour
+   - Swoosh cyan #10ACFC is an accent only, never for text on white */
+.v3-root {
+  --royal: #0048a8;
+  --royal-hover: #003a8c;
+  --royal-soft: #e8f0fb;
+  --sky: #10acfc;
+  --ink: #0b1f3f;
+  --body: #4a5b75;
+  --line: #e2e9f3;
+  --ice: #f5f8fc;
+
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  color: var(--ink);
+  background: #ffffff;
+}
+
+.v3-root .font-display {
+  font-family: 'Plus Jakarta Sans', var(--font-inter), system-ui, sans-serif;
+}
+
+.v3-root ::selection {
+  background: var(--royal);
+  color: #ffffff;
+}
+
+.v3-hero-bg {
+  background:
+    radial-gradient(60% 70% at 85% 30%, rgba(0, 72, 168, 0.08) 0%, transparent 70%),
+    radial-gradient(40% 40% at 95% 90%, rgba(16, 172, 252, 0.10) 0%, transparent 70%),
+    linear-gradient(180deg, #ffffff 0%, #f5f8fc 100%);
+}
+
+.v3-dots {
+  background-image: radial-gradient(rgba(0, 72, 168, 0.18) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.v3-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  box-shadow:
+    0 24px 48px -16px rgba(11, 31, 63, 0.18),
+    0 6px 16px -6px rgba(11, 31, 63, 0.08);
+}
+
+@keyframes v3-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.v3-rise { animation: v3-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.v3-delay-1 { animation-delay: 0.08s; }
+.v3-delay-2 { animation-delay: 0.16s; }
+.v3-delay-3 { animation-delay: 0.24s; }
+.v3-delay-4 { animation-delay: 0.32s; }
