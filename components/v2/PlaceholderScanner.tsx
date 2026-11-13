@@ -1,0 +1,21 @@
+'use client';
+
+import { useEffect } from 'react';
+import { scanForPlaceholders } from '@/lib/content-v2';
+
+export const PlaceholderScanner = () => {
+  useEffect(() => {
+    if (process.env.NODE_ENV !== 'production') {
+      const placeholders = scanForPlaceholders();
+      if (placeholders.length > 0) {
+        console.warn(
+          `[Eager Masterclass] Client action required: ${placeholders.length} unreplaced bracket placeholder(s) detected in content configuration:\n`,
+          placeholders.map((p, i) => `  ${i + 1}. ${p}`).join('\n')
+        );
+      }
+    }
+  }, []);
+
+  return null;
+};
+

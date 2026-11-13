@@ -1,0 +1,183 @@
+@import '@fontsource/plus-jakarta-sans/500.css';
+@import '@fontsource/plus-jakarta-sans/600.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/plus-jakarta-sans/800.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+@import '@fontsource/jetbrains-mono/600.css';
+
+/* EAGER Logo-Aligned Design Tokens (Scoped to /v2)
+   Sampled directly from public/logo.png:
+   - Wordmark Royal Blue: #004CA8
+   - Swoosh Sky-Cyan:     #10ACFC
+*/
+.v2-root {
+  --eager-royal: #004CA8;
+  --eager-royal-dark: #003A82;
+  --eager-azure: #0B7EE8;
+  --eager-sky: #10ACFC;
+  --eager-navy: #041A3B;
+  --eager-navy-mid: #072757;
+  --eager-ice: #F4F8FE;
+  --eager-tint: #E7F1FD;
+  --eager-border: #D4E4F7;
+  --eager-ink: #0B1F3F;
+  --eager-muted: #516684;
+
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--eager-ink);
+  background-color: #FFFFFF;
+}
+
+.v2-root h1,
+.v2-root h2,
+.v2-root h3,
+.v2-root .font-display {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+}
+
+.v2-root .font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.v2-root ::selection {
+  background-color: #10ACFC;
+  color: #041A3B;
+}
+
+/* Logo Gradient Text & Surfaces */
+.v2-text-gradient {
+  background: linear-gradient(135deg, #004CA8 0%, #0B7EE8 50%, #10ACFC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.v2-text-gradient-light {
+  background: linear-gradient(135deg, #67D1FF 0%, #10ACFC 55%, #FFFFFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.v2-btn-royal {
+  background: linear-gradient(135deg, #004CA8 0%, #0B7EE8 60%, #10ACFC 100%);
+  color: #FFFFFF;
+  box-shadow:
+    0 12px 28px -6px rgba(0, 76, 168, 0.42),
+    0 4px 10px -2px rgba(16, 172, 252, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.v2-btn-royal:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 18px 36px -6px rgba(0, 76, 168, 0.52),
+    0 6px 14px -2px rgba(16, 172, 252, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.38);
+  filter: brightness(1.05);
+}
+
+.v2-btn-sky {
+  background: linear-gradient(135deg, #10ACFC 0%, #0B7EE8 55%, #0058C4 100%);
+  color: #FFFFFF;
+  box-shadow:
+    0 14px 32px -6px rgba(16, 172, 252, 0.40),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.v2-btn-sky:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 20px 38px -6px rgba(16, 172, 252, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  filter: brightness(1.06);
+}
+
+/* Navbar Frosted Surface */
+.v2-nav-glass {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(212, 228, 247, 0.9);
+  box-shadow:
+    0 14px 36px -10px rgba(4, 26, 59, 0.10),
+    0 4px 12px -2px rgba(0, 76, 168, 0.05);
+}
+
+.v2-nav-glass-scrolled {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid rgba(185, 213, 246, 0.95);
+  box-shadow:
+    0 20px 44px -12px rgba(4, 26, 59, 0.16),
+    0 6px 16px -4px rgba(0, 76, 168, 0.08);
+}
+
+/* Clean Architectural Card */
+.v2-card {
+  background: #FFFFFF;
+  border: 1px solid #D8E6F8;
+  box-shadow:
+    0 12px 32px -10px rgba(4, 26, 59, 0.06),
+    0 4px 12px -4px rgba(0, 76, 168, 0.04);
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.v2-card:hover {
+  border-color: rgba(16, 172, 252, 0.55);
+  box-shadow:
+    0 22px 48px -12px rgba(0, 76, 168, 0.13),
+    0 8px 20px -6px rgba(16, 172, 252, 0.08);
+  transform: translateY(-4px);
+}
+
+/* Deep Royal Sapphire Surfaces */
+.v2-dark-section {
+  background:
+    radial-gradient(ellipse 70% 55% at 85% 15%, rgba(16, 172, 252, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 10% 85%, rgba(0, 76, 168, 0.32) 0%, transparent 70%),
+    linear-gradient(180deg, #041A3B 0%, #06234F 50%, #041A3B 100%);
+}
+
+.v2-dark-card {
+  background: linear-gradient(155deg, rgba(11, 47, 102, 0.72) 0%, rgba(5, 28, 64, 0.88) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(16, 172, 252, 0.22);
+  box-shadow:
+    0 20px 44px -12px rgba(2, 12, 30, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.v2-dark-card:hover {
+  border-color: rgba(16, 172, 252, 0.5);
+  transform: translateY(-4px);
+  box-shadow:
+    0 26px 56px -12px rgba(2, 12, 30, 0.7),
+    0 0 28px -8px rgba(16, 172, 252, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+/* Subtle Architectural Grid Overlay */
+.v2-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(16, 172, 252, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 172, 252, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.v2-grid-bg-light {
+  background-image:
+    linear-gradient(to right, rgba(0, 76, 168, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 76, 168, 0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
