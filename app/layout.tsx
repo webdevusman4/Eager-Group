@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
-import { PlaceholderScanner } from '@/components/PlaceholderScanner';
+import './(site)/site.css';
 import { DevRouteSwitcher } from '@/components/DevRouteSwitcher';
 
 const inter = Inter({
@@ -18,49 +18,42 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
+const description =
+  'Corporate sales training, business consultancy and executive programmes led by Iftikhar Ahmed, founder of Eager Group, Karachi.';
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://eagertrainings.com'),
-  title: '8-Hour Executive Sales Masterclass | Iftikhar Ahmed | Eager Consulting & Training',
-  description:
-    'A practical 8-hour sales masterclass for executives and business owners, led by Iftikhar Ahmed. PKR 30,000 per seat. Limited seats.',
+  title: {
+    default: 'Eager Consulting & Training | Iftikhar Ahmed',
+    template: '%s | Eager Consulting & Training',
+  },
+  description,
   openGraph: {
-    title: '8-Hour Executive Sales Masterclass | Iftikhar Ahmed',
-    description:
-      'A practical 8-hour sales masterclass for executives and business owners, led by Iftikhar Ahmed. PKR 30,000 per seat. Limited seats.',
-    images: [
-      {
-        url: '/images/og-image.webp',
-        width: 1200,
-        height: 630,
-        alt: '8-Hour Executive Sales Masterclass by Iftikhar Ahmed',
-      },
-    ],
+    siteName: 'Eager Consulting & Training',
+    title: 'Eager Consulting & Training | Iftikhar Ahmed',
+    description,
+    images: [{ url: '/images/og-image.webp', width: 1200, height: 630, alt: 'Eager Consulting & Training' }],
     type: 'website',
+    locale: 'en_PK',
   },
   twitter: {
     card: 'summary_large_image',
-    title: '8-Hour Executive Sales Masterclass | Iftikhar Ahmed',
-    description:
-      'A practical 8-hour sales masterclass for executives and business owners, led by Iftikhar Ahmed. PKR 30,000 per seat. Limited seats.',
+    title: 'Eager Consulting & Training | Iftikhar Ahmed',
+    description,
     images: ['/images/og-image.webp'],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#000080',
+  themeColor: '#0B1F3F',
   width: 'device-width',
   initialScale: 1,
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="bg-ice-50 font-sans text-navy-ink antialiased selection:bg-sand-300 selection:text-navy">
-        <PlaceholderScanner />
+      <body className="font-sans antialiased">
         {children}
         <DevRouteSwitcher />
       </body>
