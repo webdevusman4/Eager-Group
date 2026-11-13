@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { PlaceholderScanner } from '@/components/PlaceholderScanner';
+import { DevRouteSwitcher } from '@/components/DevRouteSwitcher';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -61,6 +62,7 @@ export default function RootLayout({
       <body className="bg-ice-50 font-sans text-navy-ink antialiased selection:bg-sand-300 selection:text-navy">
         <PlaceholderScanner />
         {children}
+        <DevRouteSwitcher />
       </body>
     </html>
   );
