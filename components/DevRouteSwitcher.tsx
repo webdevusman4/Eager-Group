@@ -12,6 +12,7 @@ export const DevRouteSwitcher: React.FC = () => {
   }
 
   const isV2 = pathname?.startsWith('/v2');
+  const isV3 = pathname?.startsWith('/v3');
 
   return (
     <div
@@ -21,7 +22,7 @@ export const DevRouteSwitcher: React.FC = () => {
       <Link
         href="/"
         className={`rounded-full px-3.5 py-1.5 transition-all ${
-          !isV2
+          !isV2 && !isV3
             ? 'bg-[#10ACFC] text-[#041A3B] font-bold shadow-sm'
             : 'text-white/75 hover:text-white'
         }`}
@@ -38,6 +39,14 @@ export const DevRouteSwitcher: React.FC = () => {
       >
         {!isV2 && <span className="w-2 h-2 rounded-full bg-[#10ACFC] animate-pulse" />}
         <span>Redesigned (/v2)</span>
+      </Link>
+      <Link
+        href="/v3"
+        className={`rounded-full px-3.5 py-1.5 transition-all ${
+          isV3 ? 'bg-[#10ACFC] text-[#041A3B] font-bold shadow-sm' : 'text-white/75 hover:text-white'
+        }`}
+      >
+        Corporate hero (/v3)
       </Link>
     </div>
   );

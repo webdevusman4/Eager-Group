@@ -8,7 +8,7 @@ export const PlaceholderScanner = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (pathname?.startsWith('/v2')) return;
+    if (pathname?.startsWith('/v2') || pathname?.startsWith('/v3')) return;
     if (process.env.NODE_ENV !== 'production') {
       const placeholders = scanForPlaceholders();
       if (placeholders.length > 0) {
